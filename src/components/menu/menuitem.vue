@@ -15,8 +15,8 @@ export default {
   props: {
     index: {
       type: String,
-      default: "",
-    },
+      default: ""
+    }
   },
   setup(props) {
     const menu = inject("menu", "");
@@ -26,10 +26,10 @@ export default {
     });
 
     const stateIndex = reactive({
-      currentIndex: menu.defaultIndex,
+      currentIndex: menu.defaultIndex
     });
 
-    watch(MIndex, (val) => {
+    watch(MIndex, val => {
       stateIndex.currentIndex = val;
     });
 
@@ -40,9 +40,9 @@ export default {
     });
     return {
       ...toRefs(stateIndex),
-      LenChange: menu.LenChange,
+      LenChange: menu.LenChange
     };
-  },
+  }
 };
 </script>
 

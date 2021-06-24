@@ -47,7 +47,7 @@ export default {
 .cain-menu {
   width: 100%;
   height: auto;
-  min-height: 400px;
+  // min-height: 400px;
   position: relative;
   margin: 0;
   padding: 0;

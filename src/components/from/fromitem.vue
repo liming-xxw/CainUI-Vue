@@ -22,36 +22,37 @@ export default {
   props: {
     label: {
       type: String,
-      default: "",
+      default: ""
     },
     prop: {
       type: String,
-      default: "",
-    },
+      default: ""
+    }
   },
   setup(props) {
     const form = inject("form", "");
     const Status = reactive({
       vaildateStatus: false,
       errorMessgae: "",
-      status: "",
+      status: ""
     });
 
-    const validate = (value) => {
+    const validate = value => {
       if (props.prop) {
-        return new Promise((resolve) => {
+        return new Promise(resolve => {
           let descriptor = {
-            [props.prop]: form.rules[props.prop],
+            [props.prop]: form.rules[props.prop]
           };
           let obj = {
-            [props.prop]: value,
+            [props.prop]: value
           };
           const validator = new schema(descriptor);
-          validator.validate(obj, (errors) => {
+          validator.validate(obj, errors => {
             if (errors) {
               Status.status = "error";
               Status.errorMessgae = errors[0].message;
               Status.vaildateStatus = true;
+              console.log("error");
               resolve(true);
             } else {
               Status.status = "";
@@ -66,14 +67,14 @@ export default {
     provide(
       "formitem",
       reactive({
-        validate,
+        validate
       })
     );
 
     return {
-      ...toRefs(Status),
+      ...toRefs(Status)
     };
-  },
+  }
 };
 </script>
 
@@ -99,8 +100,8 @@ export default {
       color: #de3226;
       font-size: 12px;
       position: absolute;
-      top: 50%;
-      z-index: -1;
+      top: 65%;
+      z-index: 1;
     }
   }
 }

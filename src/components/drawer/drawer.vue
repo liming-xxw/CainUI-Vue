@@ -1,17 +1,17 @@
 <template>
   <div class="cain-drawer">
     <div class="drawer-mask" v-show="modelValue" @click="handleClose"></div>
-    <transition :name="['drawer-' + direction]">
+    <transition :name="`drawer-${direction}`">
       <div
         class="drawer-body"
         v-show="modelValue"
         :class="['direction-' + direction]"
         :style="{ width: width + 'px' }"
       >
-        <div class="drawer-header">
+        <div v-show="!CreationMode" class="drawer-header">
           <span>{{ title }}</span>
         </div>
-        <div class="drawer-main">
+        <div :class="['drawer-main', { isCMode: CreationMode }]">
           <div>
             <slot></slot>
           </div>
@@ -27,29 +27,33 @@ export default {
   props: {
     title: {
       type: String,
-      default: "标题",
+      default: "标题"
     },
     width: {
       type: [Number, String],
-      default: 250,
+      default: 250
     },
     direction: {
       type: String,
-      default: "right",
+      default: "right"
     },
     modelValue: {
       type: Boolean,
-      default: false,
+      default: false
     },
+    CreationMode: {
+      type: Boolean,
+      default: false
+    }
   },
   setup(props, context) {
     const handleClose = function() {
       context.emit("update:modelValue", false);
     };
     return {
-      handleClose,
+      handleClose
     };
-  },
+  }
 };
 </script>
 
@@ -62,7 +66,7 @@ export default {
     width: 100%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.45);
-    z-index: 0;
+    z-index: 10000;
   }
   .drawer-body {
     position: fixed;
@@ -71,6 +75,7 @@ export default {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    z-index: 100001;
     .drawer-header {
       width: 100%;
       height: 60px;
@@ -83,6 +88,9 @@ export default {
       padding: 20px;
       background: white;
     }
+  }
+  .isCMode {
+    padding: 0 !important;
   }
   .direction-right {
     right: 0;

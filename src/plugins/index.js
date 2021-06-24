@@ -1,6 +1,7 @@
 // 整个包的入口
 // 统一导出
 import "../assets/fonts/iconfont.js";
+import "../style/base.scss"
 import Button from "../components/button/index.js";
 import ButtonGroup from "../components/button-group/index.js";
 import Icon from "../components/icon/index.js";
@@ -26,6 +27,13 @@ import MenuItem from "../components/menuitem/index.js";
 import SubMenu from "../components/submenu/index.js";
 import Breadcrumb from "../components/breadcrumb/index.js";
 import BreadcrumbItem from "../components/breadcrumbitem/index.js";
+import Checkbox from "../components/checkbox/index.js";
+import CheckboxGroup from "../components/checkboxgroup/index.js";
+import Card from "../components/card/index.js";
+import CardGrid from "../components/card-grid/index.js"
+import Tag from '../components/tag/index.js'
+import Dropdown from '../components/dropdown/index.js'
+import Textarea from '../components/textarea/index.js'
 const CainUI = [
   Button,
   Icon,
@@ -51,12 +59,20 @@ const CainUI = [
   SubMenu,
   Breadcrumb,
   BreadcrumbItem,
+  Checkbox,
+  CheckboxGroup,
+  Card,
+  CardGrid,
+  Tag,
+  Dropdown,
+  Textarea
 ];
 
+// export {};
 // 定义install方法
 const install = function(Vue) {
   // 注册所有的组件
-  CainUI.forEach((component) => {
+  CainUI.forEach(component => {
     Vue.component(component.name, component);
   });
   Vue.use(Message);
@@ -68,7 +84,9 @@ if (typeof window !== "undefined" && window.Vue) {
 }
 
 // 按需引入
-export {
+
+export default {
+  install,
   Button,
   Icon,
   ButtonGroup,
@@ -93,6 +111,7 @@ export {
   SubMenu,
   Breadcrumb,
   BreadcrumbItem,
+  Checkbox,
+  CheckboxGroup,
+  Card
 };
-
-export default install;

@@ -1,103 +1,66 @@
 <template>
-  <div style="height:100vh">
-    <c-layout style="height:100vh">
-      <c-header
-        ><c-breadcrumb>
-          <c-breadcrumb-item>Message1</c-breadcrumb-item>
-          <c-breadcrumb-item>Message1</c-breadcrumb-item>
-          <c-breadcrumb-item>Message1</c-breadcrumb-item>
-        </c-breadcrumb>
-      </c-header>
-      <c-layout>
-        <c-aside>
-          <c-menu default-select-keys="3-1">
-            <c-menu-item index="1">
-              <c-icon type="setting"></c-icon>
-              <span>组件2</span>
-            </c-menu-item>
-            <c-menu-item index="2">
-              <c-icon type="good"></c-icon>
-              <span>组件1</span>
-            </c-menu-item>
-            <c-sub-menu>
-              <template #title>
-                <c-icon type="good"></c-icon>
-                <span>组件1</span>
-              </template>
-              <c-menu-item index="3-1">
-                <span>组件5</span>
-              </c-menu-item>
-              <c-menu-item index="3-2">
-                <span>组件5</span>
-              </c-menu-item>
-            </c-sub-menu>
-            <c-sub-menu>
-              <template #title>
-                <c-icon type="good"></c-icon>
-                <span>组件1</span>
-              </template>
-              <c-menu-item index="4-1">
-                <span>组件5</span>
-              </c-menu-item>
-              <c-menu-item index="4-2">
-                <span>组件5</span>
-              </c-menu-item>
-              <c-menu-item index="4-3">
-                <span>组件5</span>
-              </c-menu-item>
-              <c-menu-item index="4-4">
-                <span>组件5</span>
-              </c-menu-item>
-            </c-sub-menu>
-            <c-menu-item index="3">
-              <c-icon type="good"></c-icon>
-              <span>组件12131321</span>
-            </c-menu-item>
-          </c-menu>
-        </c-aside>
-        <c-main> <c-button @click="kk">提交</c-button></c-main>
-      </c-layout>
-      <c-footer>
-        <c-radio-group v-model="value" @change="change">
-          <c-radio label="0">男</c-radio>
-          <c-radio label="1">女</c-radio>
-        </c-radio-group>
-      </c-footer>
-    </c-layout>
+  <div style="margin-top:100px;margin-left:500px">
+    <c-dropdown
+      >123
+      <template #overlay>
+        <c-menu>
+          <c-menu-item index="7">
+            <span>带参菜单</span>
+          </c-menu-item>
+          <c-menu-item index="8">
+            <span>动态路由菜单</span>
+          </c-menu-item>
+        </c-menu>
+      </template>
+    </c-dropdown>
+
+    <c-form :model="model" :rules="rules" @submit.prevent="onSubmit">
+      <c-form-item prop="username">
+        <c-input
+          icon="user"
+          v-model="forminput.username"
+          placeholder="admin"
+        ></c-input>
+      </c-form-item>
+      <c-form-item prop="userpass">
+        <c-input
+          icon="lock"
+          type="password"
+          v-model="forminput.userpass"
+          placeholder="2021"
+        ></c-input>
+      </c-form-item>
+      <div style="width: 320px">
+        <c-checkbox v-model="checkbox" label="自动登录"></c-checkbox>
+        <a style="float: right">忘记密码</a>
+      </div>
+      <c-form-item>
+        <c-button style="margin-top: 24px" block>登录</c-button>
+      </c-form-item>
+      <div></div>
+    </c-form>
   </div>
 </template>
-
 <script>
 import { ref } from "vue";
-import { Message } from "./components/message/index.js";
 export default {
   setup() {
-    let show = ref(false);
-    let show1 = ref(false);
-    const value = ref("1");
-    const change = val => {
-        console.log(val)
+    const forminput = ref({ username: "", userpass: "" });
+    const rules = {
+      username: [{ required: true, message: "用户名不能为空" }],
+      userpass: [{ required: true, message: "密码不能为空" }]
     };
-    const kk = () => {
-      Message({
-        type: "info",
-        message: "This is Message"
-      });
-    };
-    return {
-      show,
-      show1,
-      kk,
-      value,
-      change
-    };
+    const model = ref({
+      username: "",
+      userpass: ""
+    });
+    return { forminput, rules, model };
   }
 };
 </script>
 
 <style>
-body,
-html {
+body {
   margin: 0;
   padding: 0;
 }

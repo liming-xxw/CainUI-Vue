@@ -13,6 +13,5 @@ export default {
 <style lang="scss" scoped>
 .cain-footer {
   height: 70px;
-  background: #cccccc;
-}
+  }
 </style>

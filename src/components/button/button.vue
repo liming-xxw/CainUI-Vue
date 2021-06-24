@@ -8,11 +8,12 @@
         'is-disabled': disabled,
         'is-circle': circle,
         'is-round': round,
-      },
+        'is-block': block
+      }
     ]"
     :disabled="disabled"
   >
-    <c-icon  v-if="icon" :type="icon"></c-icon>
+    <c-icon v-if="icon" :type="icon"></c-icon>
     <span v-if="$slots.default">
       <slot></slot>
     </span>
@@ -26,56 +27,67 @@ export default {
   props: {
     type: {
       type: String,
-      default: "default",
+      default: "default"
     },
     icon: {
       type: String,
-      default: "",
+      default: ""
     },
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     size: {
       type: String,
-      default: "default",
+      default: "default"
     },
     circle: {
       type: Boolean,
-      default: false,
+      default: false
     },
-    round:{
-      type:Boolean,
-      default:false
+    round: {
+      type: Boolean,
+      default: false
+    },
+    block: {
+      type: Boolean,
+      default: false
     }
-
   },
   setup(props) {
     const buttonSize = computed(() => {
       return props.size;
     });
     return {
-      buttonSize,
+      buttonSize
     };
-  },
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .cain-button {
-  outline: none;
   display: inline-block;
-  border: 1px #e6e6e6 solid;
-  font-size: 14px;
-  border-radius: 4px;
-  padding: 10px 20px;
+  line-height: 1;
+  white-space: nowrap;
   cursor: pointer;
-  color: #000000;
-  transition: 0.3s;
+  background: #ffffff;
+  border: 1px solid #dcdfe6;
+  color: #606266;
+  -webkit-appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  transition: 0.1s;
+  font-weight: 500;
   -moz-user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 4px;
   &:hover {
     border: 1px #0c84ff solid;
     background: #c8e0f8;
@@ -132,30 +144,31 @@ export default {
     cursor: not-allowed;
   }
 }
-.is-circle{
+.is-circle {
   border-radius: 50%;
-  padding: 8px 11px;
+  padding: 13px;
 }
-.is-round{
-   border-radius: 20px;
+.is-round {
+  border-radius: 20px;
+}
+.is-block {
+  width: 100%;
 }
 // 按钮组
-.cain-button-group .cain-button{
+.cain-button-group .cain-button {
   // border-right: 1px red solid;
   border: 0px;
   border-radius: 0px;
 }
-.cain-button-group .cain-button:first-child{
-   border-top-left-radius: 5px;
-   border-bottom-left-radius: 5px;
+.cain-button-group .cain-button:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
-.cain-button-group .cain-button:not(:last-child){
+.cain-button-group .cain-button:not(:last-child) {
   border-right: 1px white solid;
 }
-.cain-button-group .cain-button:last-child{
-    border-top-right-radius: 5px;
-   border-bottom-right-radius: 5px;
+.cain-button-group .cain-button:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 </style>
-
-

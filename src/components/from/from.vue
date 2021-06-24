@@ -1,7 +1,7 @@
 <template>
-  <div class="cain-form">
+  <form class="cain-form">
     <slot></slot>
-  </div>
+  </form>
 </template>
 
 <script>
@@ -39,6 +39,6 @@ export default {
 .cain-form {
   display: block;
   padding: 20px;
-  width: 400px;
+  // width: 400px;
 }
 </style>

@@ -13,6 +13,5 @@ export default {
 <style>
 .cain-header {
   height: 60px;
-  background: #cccccc;
 }
 </style>

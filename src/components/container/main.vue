@@ -1,20 +1,18 @@
 <template>
-   <main class="cain-main">
-       <slot></slot>
-   </main>
+  <main class="cain-main">
+    <slot></slot>
+  </main>
 </template>
 
 <script>
 export default {
-    name:"CMain"
-}
+  name: "CMain"
+};
 </script>
 
-
 <style lang="scss" scoped>
-.cain-main{
-    min-height: 120px;
-    background: wheat;
-    flex: auto;
+.cain-main {
+  min-height: 120px;
+  flex: auto;
 }
 </style>
